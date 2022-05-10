@@ -1,1 +1,57 @@
 /* You can add global styles to this file, and also import other style files */
+/* @import 'bootstrap/dist/css/bootstrap.min.css'; */
+@import 'prismjs/themes/prism-okaidia.css';
+@import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
+@import 'prismjs/plugins/line-highlight/prism-line-highlight.css';
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+  /* background: linear-gradient(135deg,#282d2d,#212529); */
+  color: #333;
+  font-family: 'Rubik', sans-serif;
+}
+
+h1 a {
+  text-decoration: none;
+}
+
+h1 a:hover {
+  opacity: 0.87;
+  text-decoration: underline;
+}
+
+blockquote {
+  border-left: 3px solid rgba(0,0,0,0.21);
+  padding-left: 12px;
+  color: rgba(0,0,0,0.54);
+}
+
+  
+markdown table{
+    border-collapse: collapse;
+    max-width: 100%;
+    word-wrap: break-word;
+    margin-bottom: 16px;
+}
+
+markdown th,
+markdown td{
+    border: 1px solid #dfe2e5;
+    line-height: 24px;
+    padding: 6px 13px;
+}
+
+markdown th{
+    font-weight: 600;
+}
+
+markdown tr:nth-of-type(2n){
+    background-color: #f6f8fa;
+}
+

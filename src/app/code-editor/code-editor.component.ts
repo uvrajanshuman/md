@@ -1,5 +1,6 @@
 import { ToolbarService } from './toolbar.service';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { OPERATORS } from './DecoratorTemplate'
 import {
   faBold,
   faItalic,
@@ -30,6 +31,7 @@ import { OPERATIONS } from './OperationDecortorMap';
 })
 export class CodeEditorComponent implements OnInit {
 
+  Operators = OPERATORS;
   // Icons Declaration
   iconBold = faBold;
   iconItalic = faItalic;
@@ -51,15 +53,17 @@ export class CodeEditorComponent implements OnInit {
   iconCancel = faX
 
   editor: any;
-  editorOptions = { theme: 'vs-dark', language: 'markdown', scrollBeyondLastLine: false, wordWrap: 'on',minimap: {
-    enabled: false
-  },lineNumbers: 'off' };
+  editorOptions = {
+    theme: 'vs-dark', language: 'markdown', scrollBeyondLastLine: false, wordWrap: 'on', minimap: {
+      enabled: false
+    }, lineNumbers: 'off'
+  };
   @Input('code')
   code!: string;
   @Output()
   codeChange = new EventEmitter<string>();
 
-  constructor(private toolbarService:ToolbarService) { }
+  constructor(private toolbarService: ToolbarService) { }
 
   ngOnInit(): void {
   }
@@ -74,6 +78,19 @@ export class CodeEditorComponent implements OnInit {
     //   console.log(content);
     //   this.codeChange.emit(content);
     // });
+  }
+
+  getMarkup(operator: string) {
+    console.log(operator)
+    if (operator === 'link' || operator === 'image' || operator === 'htmlEntity' 
+        || operator === 'emoji') {
+      this.openPopup();
+      this.popupHeading = operator.toUpperCase();
+      this.popupOperator = operator;
+    } else {
+      this.toolbarService.generateMarkup(this.editor, operator);
+    }
+
   }
 
   bolder() {
@@ -92,7 +109,7 @@ export class CodeEditorComponent implements OnInit {
     // this.editor.revealLine(line.lineNumber);
     // this.editor.revealRange(new Range(line.lineNumber,line.column,line.lineNumber, line.column+text.length),0)
     // this.editor.setSelection(new Range(selection.startLineNumber,selection.endColumn,selection.startLineNumber,text.length));
-    this.editor.setSelection(new Range(selection.startLineNumber,selection.startColumn,selection.startLineNumber,selection.startColumn+text.length));
+    this.editor.setSelection(new Range(selection.startLineNumber, selection.startColumn, selection.startLineNumber, selection.startColumn + text.length));
     // this.editor.setSelection(selection);
     this.editor.focus();
     console.log(this.editor.getEditorType());
@@ -110,58 +127,76 @@ startColumn: 9
 startLineNumber: 5
   */
 
-  bold(){
-    this.toolbarService.replaceText(this.editor,OPERATIONS.BOLD);
+  bold() {
+    this.toolbarService.replaceText(this.editor, OPERATIONS.BOLD);
   }
-  italic() { 
-    this.toolbarService.replaceText(this.editor,OPERATIONS.ITALIC);
+  italic() {
+    this.toolbarService.replaceText(this.editor, OPERATIONS.ITALIC);
   }
   strikeThrough() {
     this.toolbarService.replaceText(this.editor, OPERATIONS.STRIKETHROUGH);
   }
-  horizontalRule() { 
+  horizontalRule() {
     this.toolbarService.replaceText(this.editor, OPERATIONS.STRIKETHROUGH);
   }
   insertHeading() { }
-  ul() { 
+  ul() {
     this.toolbarService.replaceText(this.editor, OPERATIONS.UNORDEREDLIST);
   }
-  ol() { 
+  ol() {
     this.toolbarService.replaceText(this.editor, OPERATIONS.ORDEREDLIST);
   }
-  checkList() { 
+  checkList() {
     this.toolbarService.replaceText(this.editor, OPERATIONS.CHECKLIST);
   }
   blockQuote() {
     this.toolbarService.replaceText(this.editor, OPERATIONS.BLOCKQUOTE);
   }
-  table() { 
+  table() {
     this.toolbarService.replaceText(this.editor, OPERATIONS.TABLE);
   }
-  link() { 
+  link() {
     this.toolbarService.replaceText(this.editor, OPERATIONS.LINK);
   }
-  image() { 
+  image() {
     this.toolbarService.replaceText(this.editor, OPERATIONS.IMAGE);
   }
-  insertCode() { 
+  insertCode() {
     this.toolbarService.replaceText(this.editor, OPERATIONS.CODE);
   }
-  insertHtmlEntity() { 
-    
+  insertHtmlEntity() {
+
   }
   insertEmoji() { }
 
 
-  toggleEditorTheme(){
-    const currentTheme:string = this.editorOptions.theme;
-    const newTheme:string = currentTheme === 'vs-dark'? 'vs-light': 'vs-dark';
+  toggleEditorTheme() {
+    const currentTheme: string = this.editorOptions.theme;
+    const newTheme: string = currentTheme === 'vs-dark' ? 'vs-light' : 'vs-dark';
     this.editorOptions = { ...this.editorOptions, theme: newTheme };
   }
 
-  headerToggle= false;
-  dropdownToggle(){
-    this.headerToggle= !this.headerToggle;
+  headerToggle = false;
+  dropdownToggle() {
+    this.headerToggle = !this.headerToggle;
+  }
+
+  popupOpen: boolean = false;
+  popupHeading: string = '';
+  popupOperator: string = '';
+  openPopup() {
+    this.popupOpen = true;
+  }
+  closePopup() {
+    this.popupOpen = false;
+    console.log(this.popupOpen)
+  }
+  submitFromPopup(link: string) {
+    this.toolbarService.generateMarkup(this.editor, this.popupOperator, link);
+    console.log("hello"+link)
+    this.closePopup();
+    this.popupHeading = '';
+    this.popupOperator = '';
   }
 
 }

@@ -1,3 +1,4 @@
+import { DecoratorTemplate, DecoratorTemplateMap } from './DecoratorTemplate';
 import { OperationDecorationMap, OperatorDecorator } from './OperationDecortorMap';
 import { Injectable } from '@angular/core';
 import { Range } from 'monaco-editor';
@@ -8,6 +9,34 @@ import { Range } from 'monaco-editor';
 export class ToolbarService {
 
   constructor() { }
+
+  generateMarkup(editor: any, operator: string, placeHolder?: string){
+    const selection = editor.getSelection();
+    const decoratorTemplate: DecoratorTemplate = {...DecoratorTemplateMap[operator]};
+    if(!selection.isEmpty() && decoratorTemplate.placeHolder){
+      if(placeHolder){
+        decoratorTemplate.placeHolder = placeHolder;
+      }
+      else{
+        decoratorTemplate.placeHolder = editor.getModel().getValueInRange(selection);
+      }
+    }
+    if(placeHolder){
+      decoratorTemplate.placeHolder = placeHolder;
+    }
+    const text = this.replacePlaceHolder(decoratorTemplate);
+    console.log(text);
+    var id = { major: 1, minor: 1 };
+    var op = { identifier: id, range: selection, text: text, forceMoveMarkers: true };
+    editor.executeEdits("my-source", [op]);
+    this.resetSelection(editor,selection,text);
+  }
+
+  replacePlaceHolder(decoratorTemplate: DecoratorTemplate){
+    if(decoratorTemplate.placeHolder)
+      return decoratorTemplate.markdown(decoratorTemplate.placeHolder)
+    return decoratorTemplate.markdown();
+  }
 
   replaceText(editor: any, operation: string) {
     const selection = editor.getSelection();

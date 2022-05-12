@@ -1,0 +1,12 @@
+<div class="popup-grid">
+    <div class="grid-container" *ngFor="let icon of icons">
+        <h2>{{icon.title}}</h2>
+        <div class="grid">
+            <div class="grid-item" *ngFor="let symbol of icon.symbols" 
+            (click)="submit(symbol.symbol)">
+                <span *ngIf="operator==='htmlEntity'" [innerHtml]="symbol.symbol" ></span>
+                <span *ngIf="operator==='emoji'" [innerHtml]="symbol.title" ></span>
+            </div>
+        </div>
+    </div>
+</div>

@@ -4,15 +4,6 @@
   width: 49%;
   overflow: hidden;
 }
-
-
-
-
-
-
-
-
-
   .flex{
     display: flex;
     align-items: center;
@@ -107,6 +98,8 @@ li{
 }
 
 
+
+
 .editor-menu-item:hover{
   background-color: #313640;
   color: white;
@@ -133,7 +126,7 @@ ngx-monaco-editor{
   background-color: #313640;
 }
 
-.droopdown{
+.dropdown{
   position: relative;
 }
 
@@ -169,6 +162,7 @@ ngx-monaco-editor{
   background: transparent;
   color: rgb(148 163 184/1);
   border: none;
+  padding: 5px;
 }
 
 .dropdown-btn:hover{
@@ -207,17 +201,31 @@ ngx-monaco-editor{
 
 
 .popup-item{
-  background-color: #242526;
+  background-color: white;
   color: rgb(148 163 184/1);
-  color: white;
+  color: #333;
   width: 100%;
-  height: 90%;
+  height: 50%;
   margin: 10px;
   border-radius: 5px;
   padding: 10px 15px;
+  justify-content: space-around;
+  
 }
 
 .popup-item .header{
   border-bottom: 1px solid #e2e2e2;
   justify-content: space-between;
+  align-self: flex-start;
+  flex: 1;
+}
+
+.popup-item app-link{
+  width: 100%;
+}
+
+.popup-item app-popup-grid{
+  width: 100%;
+  height: 90%;
+  flex: 1;
 }

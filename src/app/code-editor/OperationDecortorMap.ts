@@ -106,3 +106,5 @@ export const OPERATIONS={
     IMAGE: 'image',
     CODE: 'code',
 }
+
+const gen = (text:string) => `This is a ${text}`;

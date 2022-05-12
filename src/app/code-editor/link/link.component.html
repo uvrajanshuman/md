@@ -1,0 +1,28 @@
+<div class="popup-form">
+    <h2>Please provide a URL to your link</h2>
+    <form #form="ngForm"
+    (ngSubmit)="submit(form)">
+        <div class="form-control">
+        <input ngModel
+         type="text" 
+         name="link" 
+         id="link" 
+         placeholder="Enter the link" 
+         required
+         #link = "ngModel">
+        </div>
+        <div *ngIf = "link.touched && !link.valid">
+            <div *ngIf = "link.errors?.['required']">
+                
+            </div>
+        </div>
+        <div class="btn-control">
+            <button type="submit" class="btn btn-primiary"
+            [class.disabled]="!link.valid"
+            [disabled]="!link.valid">OK</button>
+        <button type="button" value="Cancel" class="btn btn-secondary"
+            (click)="cancel()"
+        >Cancel</button>
+        </div>
+    </form>
+</div>

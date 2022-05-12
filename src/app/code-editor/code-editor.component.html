@@ -1,7 +1,7 @@
 <section class="editor-previewer">
     <section class="code-editor popup-host">
         <div class="editor-toolbar">
-            <ul class="editor-menu">
+            <!-- <ul class="editor-menu">
                 <li class="editor-menu-item" (click)="bold()">
                     <fa-icon [icon]="iconBold"></fa-icon>
                 </li>
@@ -60,17 +60,49 @@
                 <li class="editor-menu-item" (click)="toggleEditorTheme()">
                     <fa-icon [icon]="iconSun"></fa-icon>
                 </li>
+            </ul> -->
+            <ul class="editor-menu">
+                <li *ngFor="let operator of Operators">
+                    <div class="editor-menu-item" *ngIf="operator.title === 'heading'">
+                        <div class="dropdown">
+                            <fa-icon [icon]="operator.icon"></fa-icon>
+                            <div class="dropdown-item flex-col">
+                                <button class="dropdown-btn"
+                                    *ngFor="let heading of operator.headings" (click)="getMarkup(heading.title)">
+                                    {{heading.icon}}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="editor-menu-item" *ngIf="operator.title !== 'heading'"
+                        (click)="getMarkup(operator.title)">
+                        <fa-icon [icon]="operator.icon"></fa-icon>
+                    </div>
+                </li>
+                <li class="editor-menu-item" (click)="toggleEditorTheme()">
+                    <fa-icon [icon]="iconSun"></fa-icon>
+                </li>
             </ul>
         </div>
         <!-- Popup Menu -->
-        <div class="popup-menu flex">
-            <div class="popup-item">
+        <div class="popup-menu flex" *ngIf="popupOpen">
+            <div class="popup-item flex-col">
                 <div class="header flex">
                     <div class="title">
-                        <h3>Link</h3>
+                        <h3>{{popupHeading}}</h3>
                     </div>
-                    <fa-icon [icon]="iconCancel"></fa-icon>
+                    <fa-icon [icon]="iconCancel" (click)="closePopup()"></fa-icon>
                 </div>
+                <app-link 
+                *ngIf="popupOperator === 'link' || popupOperator === 'image'"
+                (closePopup)="closePopup()" 
+                (outputLink)="submitFromPopup($event)"></app-link>
+                <app-popup-grid
+                *ngIf="popupOperator === 'htmlEntity' || popupOperator === 'emoji'"
+                [operator]="popupOperator"
+                (closePopup)="closePopup()" 
+                (outputSymbol)="submitFromPopup($event)"
+                ></app-popup-grid>
             </div>
         </div>
         <!-- Editor -->
@@ -83,4 +115,4 @@
         <markdown lineNumbers lineHighlight commandLine emoji katex class="variable-binding" [data]="code"></markdown>
     </section>
 </section>
-<button (click)="bolder()">vlic</button>
+<!-- <button (click)="bolder()">vlic</button> -->

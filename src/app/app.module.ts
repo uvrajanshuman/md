@@ -20,6 +20,9 @@ import { MarkdownParserComponent } from './markdown-parser/markdown-parser.compo
 import { HomeComponent } from './home/home.component';
 import { GithubReadmeComponent } from './github-readme/github-readme.component';
 import { EditPreviewComponent } from './edit-preview/edit-preview.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import {DragDropModule} from '@angular/cdk/drag-drop'
 
 @NgModule({
   declarations: [
@@ -38,21 +41,25 @@ import { EditPreviewComponent } from './edit-preview/edit-preview.component';
     AppRoutingModule,
     FormsModule,
     FontAwesomeModule,
-    MarkdownModule.forRoot({
+    DragDropModule,
+    MarkdownModule.forRoot(
+      {
       markedOptions: {
         provide: MarkedOptions,
         useValue: {
           gfm: true,
-          breaks: true,
+          breaks: false,
           pedantic: false,
-          smartLists: true,
+          smartLists: false,
           smartypants: false,
-          xhtml: true
+          xhtml: false,
         },
       },
       sanitize: SecurityContext.NONE
-}),
+}
+),
     MonacoEditorModule.forRoot(),
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

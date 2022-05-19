@@ -1,5 +1,5 @@
-<section class="editor-previewer">
-    <section class="code-editor popup-host">
+<div class="editor-previewer">
+    <div class="code-editor popup-host">
         <div class="editor-toolbar">
             <!-- <ul class="editor-menu">
                 <li class="editor-menu-item" (click)="bold()">
@@ -67,8 +67,8 @@
                         <div class="dropdown">
                             <fa-icon [icon]="operator.icon"></fa-icon>
                             <div class="dropdown-item flex-col">
-                                <button class="dropdown-btn"
-                                    *ngFor="let heading of operator.headings" (click)="getMarkup(heading.title)">
+                                <button class="dropdown-btn" *ngFor="let heading of operator.headings"
+                                    (click)="getMarkup(heading.title)">
                                     {{heading.icon}}
                                 </button>
                             </div>
@@ -93,26 +93,39 @@
                     </div>
                     <fa-icon [icon]="iconCancel" (click)="closePopup()"></fa-icon>
                 </div>
-                <app-link 
-                *ngIf="popupOperator === 'link' || popupOperator === 'image'"
-                (closePopup)="closePopup()" 
-                (outputLink)="submitFromPopup($event)"></app-link>
-                <app-popup-grid
-                *ngIf="popupOperator === 'htmlEntity' || popupOperator === 'emoji'"
-                [operator]="popupOperator"
-                (closePopup)="closePopup()" 
-                (outputSymbol)="submitFromPopup($event)"
-                ></app-popup-grid>
+                <app-link *ngIf="popupOperator === 'link' || popupOperator === 'image'" (closePopup)="closePopup()"
+                    (outputLink)="submitFromPopup($event)"></app-link>
+                <app-popup-grid *ngIf="popupOperator === 'htmlEntity' || popupOperator === 'emoji'"
+                    [operator]="popupOperator" (closePopup)="closePopup()" (outputSymbol)="submitFromPopup($event)">
+                </app-popup-grid>
             </div>
         </div>
         <!-- Editor -->
-        <ngx-monaco-editor class="variable-textarea" [options]="editorOptions" [(ngModel)]="code"
+        <div class="variable-textarea">
+            <ngx-monaco-editor 
+            [options]="editorOptions" 
+            [(ngModel)]="code" 
+            (ngModelChange)="onCodeChange($event)"
             (onInit)="onInit($event)">
-        </ngx-monaco-editor>
-    </section>
-    <section class="markdown-parser">
-        <!-- parser -->
-        <markdown lineNumbers lineHighlight commandLine emoji katex class="variable-binding" [data]="code"></markdown>
-    </section>
-</section>
-<!-- <button (click)="bolder()">vlic</button> -->
+            </ngx-monaco-editor>
+        </div>
+    </div>
+
+    <!-- parser -->
+    <div class="parser">
+        <div *ngIf="!markup" class="preview-tabs">
+            <div class="tab" [class.tab-active]="sectionPreview"
+            style="cursor: pointer;" (click)="togglePreview()">Section preview</div>
+            <div class="tab" [class.tab-active]="!sectionPreview"
+            style="cursor: pointer;" (click)="togglePreview()">Entire preview</div>
+        </div>
+        <div *ngIf="sectionPreview" class="markdown-parser">
+            <markdown lineNumbers lineHighlight commandLine emoji katex class="variable-binding" [data]="code">
+            </markdown>
+        </div>
+        <div *ngIf="!sectionPreview" class="markdown-parser">
+            <markdown lineNumbers lineHighlight commandLine emoji katex class="variable-binding" [data]="markup">
+            </markdown>
+        </div>
+    </div>
+</div>

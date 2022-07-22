@@ -1,9 +1,9 @@
 import { sectionTemplates, SectionTemplate } from './section-template';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
-import {faGripLinesVertical, faLayerGroup} from '@fortawesome/free-solid-svg-icons'
+import {faGripLinesVertical, faGripVertical,faLayerGroup, faRotate} from '@fortawesome/free-solid-svg-icons'
 
 @Component({
   selector: 'app-github-readme',
@@ -12,7 +12,9 @@ import {faGripLinesVertical, faLayerGroup} from '@fortawesome/free-solid-svg-ico
 })
 export class GithubReadmeComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+    
+   }
 
   ngOnInit(): void {
   }
@@ -20,12 +22,32 @@ export class GithubReadmeComponent implements OnInit {
   //icons
   iconGrip = faGripLinesVertical;
   iconSections = faLayerGroup;
+  iconGripDots = faGripVertical;
+  iconReset = faRotate;
 
-  allSections : SectionTemplate[] = sectionTemplates;
+  allSections : SectionTemplate[] = [...sectionTemplates];
   selectedSections : SectionTemplate[] = [];
 
+  activeSectionIndex!: number;
+
+  activeSection!: SectionTemplate;
+
   entireMarkup: string = '';
-  currentMarkup: string = '';
+  _currentMarkup: string = '';
+
+
+  get currentMarkup():string{
+    return this._currentMarkup;
+  }
+
+  set currentMarkup(newString: string){
+    this._currentMarkup = newString;
+    // console.log(this.selectedSections);
+    // this.selectedSections[this.activeSectionIndex].markdown = newString;
+    console.log(this.selectedSections[this.activeSectionIndex]);
+    // this.selectedSections[this.activeSectionIndex]['markdown'] = newString;
+    this.generateEntireMarkup();
+  }
 
   sidebarCollapsed:boolean = false;
 
@@ -41,6 +63,9 @@ export class GithubReadmeComponent implements OnInit {
         event.previousIndex,
         event.currentIndex
       );
+      if(event.container.id === 'cdk-drop-list-1'){
+        this.generateEntireMarkup();
+      }
     } else {
       console.log('dropped Event', `> dropped '${event.item.data}' into '${event.container.id}'`);
       transferArrayItem(
@@ -49,7 +74,34 @@ export class GithubReadmeComponent implements OnInit {
         event.previousIndex,
         event.currentIndex
       );
-    }
 
+      if(event.container.id === 'cdk-drop-list-1' && this.selectedSections.length ==1){
+        this.makeSectionActive(0);
+      }
+    }
+    this.generateEntireMarkup();
+  }
+
+  sectionPreview:boolean = true;
+  togglePreview(){
+    this.sectionPreview = !this.sectionPreview;
+    console.log(this.sectionPreview);
+  }
+
+  makeSectionActive(index: number){
+    const activeSection = this.selectedSections[index];
+    this.currentMarkup = activeSection.markdown;
+    this.activeSection = activeSection;
+    this.activeSectionIndex = index;
+  }
+
+
+  generateEntireMarkup(){
+    console.log("Regenerating entire markup");
+    console.log(this.activeSectionIndex);
+    this.entireMarkup = '';
+    for (let section of this.selectedSections){
+      this.entireMarkup = this.entireMarkup+section.markdown;
+    }
   }
 }

@@ -1,0 +1,26 @@
+.editor-previewer{
+    display: flex;
+    justify-content: center;
+    padding: 0 25px;
+    width: 100%;
+    height: calc(100vh - 160px);
+    gap: 15px;
+  }
+
+.md-editor{
+    width: 49%;
+    height: 100%;
+    /* padding: 0 20px; */
+}
+
+.md-parser{
+    width: 49%;
+    height: 100%;
+    /* padding: 0 20px; */
+    /* overflow: auto; */
+}
+
+.title{
+    color:#10B981;
+    padding: 5px 10px;
+}

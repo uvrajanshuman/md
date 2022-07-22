@@ -4,12 +4,28 @@
             <!-- <a href=""><h1>M &#xf063; G</h1></a>  -->
             <img src="../assets/images/logo3.png" alt="">
         </div>
-        <nav>
+        <nav class="flex">
             <ul>
-                <li><a href="#">CheatSheet</a></li>
-                <li><a href="#">MD Editor</a></li>
-                <li><a href="#">Github-README</a></li>
+                <!-- <li><a href="#">CheatSheet</a></li> -->
+                <li><a routerLink="/edit">MD Editor</a></li>
+                <li><a routerLink="/github-readme">Github-README</a></li>
+                <!-- <li class="mode" (click)="toggleDarkMode()"> -->
+                    <!-- <div *ngIf="darkMode; then thenBlock else elseBlock"></div>
+                    <ng-template  #thenBlock >
+                        <fa-icon [icon]="iconMoon" size="2x" style="color: rgb(145, 143, 143);"></fa-icon>
+                    </ng-template>
+                    <ng-template #elseBlock >
+                        <fa-icon [icon]="iconSun" size="2x" style="color: orange;"></fa-icon>
+                    </ng-template> -->
+                <!-- </li> -->
             </ul>
+            <label for="checkbox" class="toggler">
+                <input type="checkbox" id="checkbox" (click)="toggleDarkMode()">
+                <span class="ball"></span>
+                <fa-icon class="sun" [icon]="iconSun" size="1x" style="color: orange;"></fa-icon>
+                <fa-icon class="moon" [icon]="iconMoon" size="1x" style="color: rgb(255, 255, 255);"></fa-icon>
+            </label>
         </nav>
+        
     </div>
 </div>

@@ -1,0 +1,10 @@
+.footer{
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.gitIcon{
+    padding: 5px;
+}

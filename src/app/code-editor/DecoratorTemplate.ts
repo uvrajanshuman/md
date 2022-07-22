@@ -53,27 +53,27 @@ export const DecoratorTemplateMap: { [key: string]: DecoratorTemplate } = {
     heading2: {
         title: 'Heading 2',
         placeHolder: 'Heading level 2',
-        markdown: (placeHolder?: string) => `##${placeHolder}##`
+        markdown: (placeHolder?: string) => `## ${placeHolder}`
     },
     heading3: {
         title: 'Heading 3',
         placeHolder: 'Heading level 3',
-        markdown: (placeHolder?: string) => `###${placeHolder}###`
+        markdown: (placeHolder?: string) => `### ${placeHolder}`
     },
     heading4: {
         title: 'Heading 4',
         placeHolder: 'Heading level 4',
-        markdown: (placeHolder?: string) => `####${placeHolder}####`
+        markdown: (placeHolder?: string) => `#### ${placeHolder}`
     },
     heading5: {
         title: 'Heading 5',
         placeHolder: 'Heading level 5',
-        markdown: (placeHolder?: string) => `#####${placeHolder}#####`
+        markdown: (placeHolder?: string) => `##### ${placeHolder}`
     },
     heading6: {
         title: 'Heading 6',
         placeHolder: 'Heading level 6',
-        markdown: (placeHolder?: string) => `######${placeHolder}######`
+        markdown: (placeHolder?: string) => `###### ${placeHolder}`
     },
     bold: {
         title: 'bold',
@@ -97,12 +97,12 @@ export const DecoratorTemplateMap: { [key: string]: DecoratorTemplate } = {
     unorderedList: {
         title: 'UnorderedList',
         placeHolder: 'First Item',
-        markdown: (placeHolder?: string) => `- ${placeHolder}##`
+        markdown: (placeHolder?: string) => `- ${placeHolder}`
     },
     orderedList: {
         title: 'OrderedList',
         placeHolder: 'First Item',
-        markdown: (placeHolder?: string) => `1. ${placeHolder}##`
+        markdown: (placeHolder?: string) => `1. ${placeHolder}`
     },
     checkList: {
         title: 'CheckList',
@@ -131,7 +131,7 @@ export const DecoratorTemplateMap: { [key: string]: DecoratorTemplate } = {
     },
     code: {
         title: 'Code',
-        markdown: () => `\`\`\`javascript\nconst language = 'javascript';\'\'\'`
+        markdown: () => `\`\`\`javascript\nconst language = 'javascript';\`\`\``
     },
     htmlEntity: {
         title: 'HtmlEntity',

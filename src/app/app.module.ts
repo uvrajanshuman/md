@@ -19,10 +19,11 @@ import { PopupGridComponent } from './code-editor/popup-grid/popup-grid.componen
 import { MarkdownParserComponent } from './markdown-parser/markdown-parser.component';
 import { HomeComponent } from './home/home.component';
 import { GithubReadmeComponent } from './github-readme/github-readme.component';
-import { EditPreviewComponent } from './edit-preview/edit-preview.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import {DragDropModule} from '@angular/cdk/drag-drop'
+import {DragDropModule} from '@angular/cdk/drag-drop';
+import { EditorComponent } from './editor/editor.component';
+import { FooterComponent } from './footer/footer.component'
 
 @NgModule({
   declarations: [
@@ -34,8 +35,9 @@ import {DragDropModule} from '@angular/cdk/drag-drop'
     MarkdownParserComponent,
     HomeComponent,
     GithubReadmeComponent,
-    EditPreviewComponent
-  ],
+    EditorComponent,
+    FooterComponent
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,

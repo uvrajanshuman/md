@@ -30,8 +30,7 @@ export class CodeEditorComponent implements OnInit {
   @Input('code')
   code!: string;
 
-  @Input('markup')
-  markup: string = '';
+  
 
   @Output()
   codeChange = new EventEmitter<string>();
@@ -84,11 +83,7 @@ export class CodeEditorComponent implements OnInit {
     this.popupOperator = '';
   }
 
-  sectionPreview:boolean = true;
-  togglePreview(){
-    this.sectionPreview = !this.sectionPreview;
-    console.log(this.sectionPreview);
-  }
+  
 
   onCodeChange(value: string){
     this.codeChange.emit(value);

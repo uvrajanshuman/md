@@ -2,12 +2,11 @@
     display: flex;
     flex-direction: column;
     background-color: #fff;
-    padding: 20px 15px;
     color: #333;
 }
 
-.popup-form .form-control{
-    margin: 30px 0;
+.popup-form .form-ctrl{
+    margin: 10px 0;
 }
 
 .popup-form input[type='text']{

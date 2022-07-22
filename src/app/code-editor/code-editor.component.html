@@ -1,66 +1,6 @@
-<div class="editor-previewer">
+<!-- <div class="editor-previewer"> -->
     <div class="code-editor popup-host">
         <div class="editor-toolbar">
-            <!-- <ul class="editor-menu">
-                <li class="editor-menu-item" (click)="bold()">
-                    <fa-icon [icon]="iconBold"></fa-icon>
-                </li>
-                <li class="editor-menu-item" (click)="italic()">
-                    <fa-icon [icon]="iconItalic"></fa-icon>
-                </li>
-                <li class="editor-menu-item" (click)="strikeThrough()">
-                    <fa-icon [icon]="iconStrikethrough"></fa-icon>
-                </li>
-                <li class="editor-menu-item" (click)="horizontalRule()">
-                    <fa-icon [icon]="iconHorizontalRule"></fa-icon>
-                </li>
-                <li class="editor-menu-item">
-                    <div class="dropdown">
-                        <fa-icon [icon]="iconHeading"></fa-icon>
-                    <div class="dropdown-item flex-col">
-                        <button class="dropdown-btn">H1</button>
-                        <button class="dropdown-btn">H2</button>
-                        <button class="dropdown-btn">H3</button>
-                        <button class="dropdown-btn">H4</button>
-                        <button class="dropdown-btn">H5</button>
-                        <button class="dropdown-btn">H6</button>
-                    </div>
-                </div>
-                </li>
-                <li class="editor-menu-item" (click)="ul()">
-                    <fa-icon [icon]="iconListUl"></fa-icon>
-                </li>
-                <li class="editor-menu-item" (click)="ol()">
-                    <fa-icon [icon]="iconListOl"></fa-icon>
-                </li>
-                <li class="editor-menu-item" (click)="checkList()">
-                    <fa-icon [icon]="iconCheckList"></fa-icon>
-                </li>
-                <li class="editor-menu-item" (click)="blockQuote()">
-                    <fa-icon [icon]="iconBlockQuote"></fa-icon>
-                </li>
-                <li class="editor-menu-item" (click)="table()">
-                    <fa-icon [icon]="iconTable"></fa-icon>
-                </li>
-                <li class="editor-menu-item">
-                    <fa-icon [icon]="iconLink"></fa-icon>
-                </li>
-                <li class="editor-menu-item">
-                    <fa-icon [icon]="iconImage"></fa-icon>
-                </li>
-                <li class="editor-menu-item">
-                    <fa-icon [icon]="iconCode"></fa-icon>
-                </li>
-                <li class="editor-menu-item" (click)="insertCode()">
-                    <fa-icon [icon]="iconHtmlEntity"></fa-icon>
-                </li>
-                <li class="editor-menu-item">
-                    <fa-icon [icon]="iconEmoji"></fa-icon>
-                </li>
-                <li class="editor-menu-item" (click)="toggleEditorTheme()">
-                    <fa-icon [icon]="iconSun"></fa-icon>
-                </li>
-            </ul> -->
             <ul class="editor-menu">
                 <li *ngFor="let operator of Operators">
                     <div class="editor-menu-item" *ngIf="operator.title === 'heading'">
@@ -112,7 +52,7 @@
     </div>
 
     <!-- parser -->
-    <div class="parser">
+    <!-- <div class="parser">
         <div *ngIf="!markup" class="preview-tabs">
             <div class="tab" [class.tab-active]="sectionPreview"
             style="cursor: pointer;" (click)="togglePreview()">Section preview</div>
@@ -127,5 +67,5 @@
             <markdown lineNumbers lineHighlight commandLine emoji katex class="variable-binding" [data]="markup">
             </markdown>
         </div>
-    </div>
-</div>
+    </div> -->
+<!-- </div> -->

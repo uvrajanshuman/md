@@ -2,7 +2,7 @@
   <div class="collapsable-sidebar" [class.sidebar-collapsed]="sidebarCollapsed">
     
     <div *ngIf="!sidebarCollapsed" class="collapse-toggle flex" (click)="toggleSidebarCollapse()">
-      <fa-icon [icon]="iconGrip"></fa-icon>
+      <fa-icon [icon]="iconGrip" size="2x"></fa-icon>
     </div>
     <!-- if collapsed -->
     <div *ngIf="sidebarCollapsed" class="collapsed-icons title">
@@ -64,9 +64,6 @@
           <div class="reset-section"><fa-icon [icon]="iconReset"></fa-icon></div>
         </div>
       </div>
-
-
-
     </div>
   </div>
   <div class="editor-previewer">
@@ -74,7 +71,7 @@
       <div class="title">
         Editor
       </div>
-      <app-code-editor [(code)]="activeSection.markdown" (codeChange)="generateEntireMarkup()" class="editor-component" *ngIf="selectedSections.length > 0"></app-code-editor>
+      <app-code-editor [(code)]="activeSection.markdown" (codeChange)="generatePlaceholderMarkup()" class="editor-component" *ngIf="selectedSections.length > 0"></app-code-editor>
     </div>
     <div class="md-parser flex-col">
       <div class="preview-tabs">

@@ -11,97 +11,126 @@ import {faGripLinesVertical, faGripVertical,faLayerGroup, faRotate} from '@forta
   styleUrls: ['./github-readme.component.css']
 })
 export class GithubReadmeComponent implements OnInit {
+   //icons
+   iconGrip = faGripLinesVertical;
+   iconSections = faLayerGroup;
+   iconGripDots = faGripVertical;
+   iconReset = faRotate;
 
-  constructor() {
-    
-   }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
-  //icons
-  iconGrip = faGripLinesVertical;
-  iconSections = faLayerGroup;
-  iconGripDots = faGripVertical;
-  iconReset = faRotate;
+  ngOnInit(): void {}
 
   allSections : SectionTemplate[] = [...sectionTemplates];
   selectedSections : SectionTemplate[] = [];
 
+  // to maintain index of currently active section.
   activeSectionIndex!: number;
-
+  // maintains currently active section.
   activeSection!: SectionTemplate;
-
+  // cumulative markup of all sections.
   entireMarkup: string = '';
-  _currentMarkup: string = '';
 
 
-  get currentMarkup():string{
-    return this._currentMarkup;
-  }
-
-  set currentMarkup(newString: string){
-    this._currentMarkup = newString;
-    // console.log(this.selectedSections);
-    // this.selectedSections[this.activeSectionIndex].markdown = newString;
-    console.log(this.selectedSections[this.activeSectionIndex]);
-    // this.selectedSections[this.activeSectionIndex]['markdown'] = newString;
-    this.generateEntireMarkup();
-  }
-
-  sidebarCollapsed:boolean = false;
-
-  toggleSidebarCollapse(){
-    this.sidebarCollapsed = !this.sidebarCollapsed;
-  }
-
+  //drop event
   drop(event: CdkDragDrop<SectionTemplate[]>) {
+    //dropped in same container.
     if (event.previousContainer === event.container) {
-      console.log('dropped Event', `> dropped '${event.item.data}' into '${event.container.id}'`);
+      console.log("Shuffule within container");
+      let sectionReshuffuled : boolean = true;
+      if(event.previousIndex === event.currentIndex){
+        sectionReshuffuled = false
+      }
       moveItemInArray(
         event.container.data,
         event.previousIndex,
         event.currentIndex
       );
-      if(event.container.id === 'cdk-drop-list-1'){
+      if(event.container.id === 'cdk-drop-list-1' && sectionReshuffuled){
+        this.findActiveIndex();
+        this.makeSectionActive(this.activeSectionIndex);
         this.generateEntireMarkup();
       }
     } else {
-      console.log('dropped Event', `> dropped '${event.item.data}' into '${event.container.id}'`);
+      console.log("shuffule across container");
       transferArrayItem(
         event.previousContainer.data,
         event.container.data,
         event.previousIndex,
         event.currentIndex
       );
-
+      //by default first item of selected section is active
       if(event.container.id === 'cdk-drop-list-1' && this.selectedSections.length ==1){
         this.makeSectionActive(0);
+        // this.generatePlaceholderMarkup();
       }
+      //if selected section becomes empty reset the current markup
+      this.generateEntireMarkup();
+      
+      
     }
-    this.generateEntireMarkup();
   }
 
+  makeSectionActive(index: number){
+    const activeSection = this.selectedSections[index];
+    this.activeSection = activeSection;
+    this.activeSectionIndex = index;
+  }
+
+  findActiveIndex(){
+    this.selectedSections.forEach((element, index)=>{
+      if(element.id === this.activeSection.id){
+        this.activeSectionIndex = index;
+      }
+    });
+  }
+
+  generateEntireMarkup(){
+    console.log("Regenerating entire markup");
+    console.log(this.activeSectionIndex);
+    this.nullifyOnSectionShuffle();
+    this.entireMarkup = '';
+    for (let section of this.selectedSections){
+      this.entireMarkup = this.entireMarkup+section.markdown;
+    }
+  }
+
+  prefixMarkup:string|null = null;
+  suffixMarkup:string|null = null;
+  generatePlaceholderMarkup(){
+    this.entireMarkup = '';
+    if(this.prefixMarkup == null){
+      this.prefixMarkup = '';
+      for(var i =0; i<this.activeSectionIndex; i++){
+        this.prefixMarkup+=this.selectedSections[i].markdown;
+      }
+    }
+    if(this.suffixMarkup == null){
+      this.suffixMarkup = '';
+      for(var i =this.activeSectionIndex+1; i<this.selectedSections.length; i++){
+        this.suffixMarkup+=this.selectedSections[i].markdown;
+      }
+    }
+
+    this.entireMarkup = this.prefixMarkup+this.activeSection.markdown+this.suffixMarkup;
+  }
+
+  nullifyOnSectionShuffle(){
+    this.prefixMarkup = null;
+    this.suffixMarkup = null;
+  }
+  
+  //section priview toggle
   sectionPreview:boolean = true;
   togglePreview(){
     this.sectionPreview = !this.sectionPreview;
     console.log(this.sectionPreview);
   }
+  // sidebar collapse toggle.
 
-  makeSectionActive(index: number){
-    const activeSection = this.selectedSections[index];
-    this.currentMarkup = activeSection.markdown;
-    this.activeSection = activeSection;
-    this.activeSectionIndex = index;
-  }
+  sidebarCollapsed:boolean = false;
 
-
-  generateEntireMarkup(){
-    console.log("Regenerating entire markup");
-    console.log(this.activeSectionIndex);
-    this.entireMarkup = '';
-    for (let section of this.selectedSections){
-      this.entireMarkup = this.entireMarkup+section.markdown;
-    }
+  toggleSidebarCollapse(){
+    this.sidebarCollapsed = !this.sidebarCollapsed;
   }
 }

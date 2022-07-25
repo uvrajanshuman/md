@@ -19,18 +19,21 @@
 }
 
 .drag-box {
-  background-color: #e2e2e2;
-  border: solid #333 1px;
+  /* background-color: #e2e2e2;
+  border: solid #333 1px; */
   cursor: pointer;
   display: flex;
   box-sizing: border-box;
   /* flex-grow: 1; */
+
   justify-content: center;
   text-align: center;
   word-wrap:break-word;
+
   /* margin: .25em; */
   /* padding: .25em; */
-  margin: 10px 0;
+
+  /* margin: 10px 0; */
   padding: 10px;
   width: 90%;
   display: flex;
@@ -199,4 +202,56 @@
 
 .activeSection{
   border: 1px solid #10B981;
+}
+
+
+
+
+.box-list {
+  width: 500px;
+  max-width: 100%;
+  border: solid 1px #ccc;
+  min-height: 60px;
+  /* display: block; */
+  background: white;
+  border-radius: 4px;
+  /* overflow: hidden; */
+}
+
+.drag-box {
+  padding: 20px 10px;
+  border-bottom: solid 1px #ccc;
+  color: rgba(0, 0, 0, 0.87);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  cursor: move;
+  background: white;
+  font-size: 14px;
+}
+
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+              0 8px 10px 1px rgba(0, 0, 0, 0.14),
+              0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.drag-box:last-child {
+  border: none;
+}
+
+.box-list.cdk-drop-list-dragging .drag-box:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }

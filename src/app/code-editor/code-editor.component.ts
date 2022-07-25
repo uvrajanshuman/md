@@ -30,8 +30,6 @@ export class CodeEditorComponent implements OnInit {
   @Input('code')
   code!: string;
 
-  
-
   @Output()
   codeChange = new EventEmitter<string>();
 
@@ -82,8 +80,6 @@ export class CodeEditorComponent implements OnInit {
     this.popupHeading = '';
     this.popupOperator = '';
   }
-
-  
 
   onCodeChange(value: string){
     this.codeChange.emit(value);

@@ -43,23 +43,24 @@
 
 
       <!-- All sections -->
-      <div cdkDropList (cdkDropListDropped)="drop($event)" [cdkDropListData]="allSections" class="box-list">
-        <div class="title">All sections</div>
+      <div cdkDropList (cdkDropListDropped)="drop($event)" [cdkDropListData]="allSections" 
+      class="box-list">
+        <!-- <div class="title">All sections</div> -->
         <div cdkDrag class="drag-box"
         cdkDragBoundary="#drag-boundary"
         *ngFor="let section of allSections; index as i">
-          <div class="drag-handle"><fa-icon [icon]="iconGripDots"></fa-icon></div>
+          <div class="drag-handle"><fa-icon [icon]="iconMove" size="2x"></fa-icon></div>
           <div class="section">{{section.title}}</div> 
         </div>
       </div>
 
       <!-- Selected Sections -->
       <div cdkDropList (cdkDropListDropped)="drop($event)" [cdkDropListData]="selectedSections" class="box-list">
-        <div class="title">Selected Sections</div>
+        <!-- <div class="title">Selected Sections</div> -->
         <div cdkDrag class="drag-box" 
         cdkDragBoundary="#drag-boundary"
         *ngFor="let section of selectedSections; index as i">
-          <div class="drag-handle" cdkDragHandle><fa-icon [icon]="iconGripDots"></fa-icon></div>
+          <div class="drag-handle" cdkDragHandle><fa-icon [icon]="iconMove" size="lg"></fa-icon></div>
           <div class="section" (click)="makeSectionActive(i)">{{section.title}}</div> 
           <div class="reset-section"><fa-icon [icon]="iconReset"></fa-icon></div>
         </div>
@@ -71,7 +72,8 @@
       <div class="title">
         Editor
       </div>
-      <app-code-editor [(code)]="activeSection.markdown" (codeChange)="generatePlaceholderMarkup()" class="editor-component" *ngIf="selectedSections.length > 0"></app-code-editor>
+      <app-code-editor [(code)]="activeSection.markdown" (codeChange)="generateEntireMarkup()" class="editor-component" *ngIf="selectedSections.length > 0"></app-code-editor>
+      <div *ngIf="selectedSections.length === 0">Select a section</div>
     </div>
     <div class="md-parser flex-col">
       <div class="preview-tabs">
@@ -80,7 +82,7 @@
         <div class="tab" [class.tab-active]="!sectionPreview" style="cursor: pointer;" (click)="togglePreview()">Entire
           preview</div>
       </div>
-      <app-markdown-parser *ngIf="sectionPreview" [code]="activeSection.markdown" class="parser-component"></app-markdown-parser>
+      <app-markdown-parser *ngIf="sectionPreview && selectedSections.length > 0" [code]="activeSection.markdown" class="parser-component"></app-markdown-parser>
       <app-markdown-parser *ngIf="!sectionPreview" [code]="entireMarkup" class="parser-component"></app-markdown-parser>
     </div>
   </div>

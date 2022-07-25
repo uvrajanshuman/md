@@ -1,13 +1,20 @@
-<app-navbar></app-navbar>
+<!-- <app-navbar></app-navbar> -->
 <!-- <app-code-editor
   [code]="code"
   class="variable-textarea"
   (codeChange)="updateCode($event)"
 ></app-code-editor> -->
 <!-- <app-markdown-parser [code]="'# Abcd'"></app-markdown-parser> -->
-<router-outlet ></router-outlet>
+<div class="body-container">
+  <div class="sidebar">
+    <app-sidebar></app-sidebar>
+  </div>
 
-<app-footer></app-footer>
-<!-- <textarea class="variable-textarea" [(ngModel)]="markdown"></textarea> -->
+  <div class="home-container">
+  <!-- <router-outlet></router-outlet> -->
+</div>
 
+  <!-- <app-footer></app-footer> -->
+  <!-- <textarea class="variable-textarea" [(ngModel)]="markdown"></textarea> -->
 
+</div>

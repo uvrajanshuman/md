@@ -1,0 +1,52 @@
+.body-container{
+    position: relative;
+    min-width: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+.sidebar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 78px;
+    background: #11101d;
+    padding: 6px 14px;
+    transition: all 0.5s ease;
+}
+
+.sidebar.active{
+    width: 240px;
+}
+
+.sidebar.active .logo_content .logo{
+    opacity: 1;
+    pointer-events: all;
+}
+
+.sidebar.active #btn{
+    left: 90%;
+}
+
+.sidebar.active ul li .tooltip{
+    display: block;
+}
+
+.sidebar.active .links_name{
+    opacity: 0;
+    pointer-events: all;
+    color: red;
+}
+
+.sidebar.active ~ .home-container{
+    width: calc(100%-240px);
+    left: 240px;
+}
+.home-container{
+    position: absolute;
+    height: 100%;
+    width: calc(100%-78px);
+    left: 78px;
+    transition: all 0.5s ease;
+}

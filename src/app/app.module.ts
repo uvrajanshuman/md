@@ -23,7 +23,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import { EditorComponent } from './editor/editor.component';
-import { FooterComponent } from './footer/footer.component'
+import { FooterComponent } from './footer/footer.component';
+import { SidebarComponent } from './sidebar/sidebar.component'
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { FooterComponent } from './footer/footer.component'
     HomeComponent,
     GithubReadmeComponent,
     EditorComponent,
-    FooterComponent
+    FooterComponent,
+    SidebarComponent
     ],
   imports: [
     BrowserModule,

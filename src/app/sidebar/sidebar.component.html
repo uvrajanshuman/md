@@ -1,44 +1,53 @@
 <div class="sidebar-container">
-    <div class="logo_content">
+    <div class="logo-container">
         <div class="logo">
-            <!-- TOADD: icon -->
-
-            <div class="logo_name">MarkDown Generator</div>
+            <img src="../../assets/images/logo3.png" alt="" class="logo-icon">
+            <div class="logo-name">MDG</div>
         </div>
-        <!-- TOADD: switch btn -->
-        <fa-icon (click)="sidebarCollapse()" [icon]="iconBars" id="btn"></fa-icon>
+        <fa-icon [icon]="iconMenuCollapse" id="sidebarToggle" (click)="toggleSidebar()"></fa-icon>
     </div>
-    <ul class="nav_list">
-        <li>
-            <a href="">
-                <!-- TO ADD: icon -->
-                <span class="links_name">Dashboard</span>
-            </a>
-            <span class="tooltip">Dashboard</span>
-        </li>
-        <li>
-            <a href="">
-                <!-- TO ADD: icon -->
-                <span class="links_name">Dashboard</span>
-            </a>
-            <span class="tooltip">Dashboard</span>
-        </li>
-        <li>
-            <a href="">
-                <!-- TO ADD: icon -->
-                <span class="links_name">Dashboard</span>
-            </a>
-            <span class="tooltip">Dashboard</span>
-        </li>
-        <li>
-            <a href="">
-                <!-- TO ADD: icon -->
-                <span class="links_name">Dashboard</span>
-            </a>
-            <span class="tooltip">Dashboard</span>
-        </li>
-    </ul>
+    <nav class="nav-list">
+        <ul>
+            <li>
+                <a href="">
+                    <fa-icon class="link-icon" [icon]="iconEditor"></fa-icon>
+                    <span class="link-title">Editor</span>
+                </a>
+                <span class="tooltip">Editor</span>
+            </li>
+            <li>
+                <a href="">
+                    <fa-icon class="link-icon" [icon]="iconGitHubEditor"></fa-icon>
+                    <span class="link-title">GitHub ReadMe</span>
+                </a>
+                <span class="tooltip">GitHub README.md</span>
+            </li>
+            <li>
+                <a href="">
+                    <fa-icon class="link-icon" [icon]="iconDocs"></fa-icon>
+                    <span class="link-title">CheatSheet</span>
+                </a>
+                <span class="tooltip">CheatSheet</span>
+            </li>
+            <li>
+                <a href="">
+                    <fa-icon class="link-icon" [icon]="iconDownload"></fa-icon>
+                    <span class="link-title">Download</span>
+                </a>
+                <span class="tooltip">Download</span>
+            </li>
+        </ul>
+        <div class="theme-toggle" (click)="toggleDarkMode()">
+            <fa-icon class="link-icon" size="2x" style="color: #fff;" [icon]="iconMode"></fa-icon>
+        </div>
+        <label for="checkbox" class="toggler">
+            <input type="checkbox" id="checkbox" (click)="toggleDarkMode()">
+            <span class="ball"></span>
+            <fa-icon class="sun" [icon]="iconSun" size="1x" style="color: orange;"></fa-icon>
+            <fa-icon class="moon" [icon]="iconMoon" size="1x" style="color: rgb(255, 255, 255);"></fa-icon>
+        </label>
+    </nav>
     <div class="profile_content">
-        <!-- other icons -->
+
     </div>
 </div>

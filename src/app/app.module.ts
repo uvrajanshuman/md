@@ -1,3 +1,4 @@
+import { SidenavComponent } from './sidenav/sidenav.component';
 import { NgModule, SecurityContext } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -24,7 +25,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import { EditorComponent } from './editor/editor.component';
 import { FooterComponent } from './footer/footer.component';
-import { SidebarComponent } from './sidebar/sidebar.component'
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { SidebarComponent } from './sidebar/sidebar.component'
     GithubReadmeComponent,
     EditorComponent,
     FooterComponent,
+    SidenavComponent,
     SidebarComponent
     ],
   imports: [

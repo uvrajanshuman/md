@@ -1,53 +1,28 @@
-<div class="sidebar-container">
-    <div class="logo-container">
-        <div class="logo">
-            <img src="../../assets/images/logo3.png" alt="" class="logo-icon">
-            <div class="logo-name">MDG</div>
-        </div>
-        <fa-icon [icon]="iconMenuCollapse" id="sidebarToggle" (click)="toggleSidebar()"></fa-icon>
-    </div>
-    <nav class="nav-list">
+<div class="sidebar">
+    <ul class="nav-list">
+        <li (click)="toggleEditor()" [ngClass]="editorActive?'sidebar-active':''">
+            <fa-icon class="link-icon" style="font-size: 28px;" [icon]="iconEditor"></fa-icon>
+            <span class="tooltip">Editor</span>
+        </li>
+        <li (click)="togglePreviewer()" [ngClass]="previewerActive?'sidebar-active':''">
+            <fa-icon class="link-icon" style="font-size: 24px;" [icon]="iconPreview"></fa-icon>
+            <span class="tooltip">Preview</span>
+        </li>
+        <li *ngIf="sectionAvailable" (click)="toggleSections()" [ngClass]="sectionActive?'sidebar-active':''">
+            <fa-icon class="link-icon" style="font-size: 24px;" [icon]="iconSection"></fa-icon>
+            <span class="tooltip">Section</span>
+        </li>
+        <li (click)="toggleDownload()" [ngClass]="downloadActive?'sidebar-active':''">
+            <fa-icon class="link-icon" style="font-size: 24px;" [icon]="iconDownload"></fa-icon>
+            <span class="tooltip">Download</span>
+        </li>
+    </ul>
+    <div class="profile-section" style="color: white;">
         <ul>
             <li>
-                <a href="">
-                    <fa-icon class="link-icon" [icon]="iconEditor"></fa-icon>
-                    <span class="link-title">Editor</span>
-                </a>
-                <span class="tooltip">Editor</span>
-            </li>
-            <li>
-                <a href="">
-                    <fa-icon class="link-icon" [icon]="iconGitHubEditor"></fa-icon>
-                    <span class="link-title">GitHub ReadMe</span>
-                </a>
-                <span class="tooltip">GitHub README.md</span>
-            </li>
-            <li>
-                <a href="">
-                    <fa-icon class="link-icon" [icon]="iconDocs"></fa-icon>
-                    <span class="link-title">CheatSheet</span>
-                </a>
-                <span class="tooltip">CheatSheet</span>
-            </li>
-            <li>
-                <a href="">
-                    <fa-icon class="link-icon" [icon]="iconDownload"></fa-icon>
-                    <span class="link-title">Download</span>
-                </a>
+                <fa-icon class="link-icon" style="font-size: 24px;" [icon]="iconGitHub"></fa-icon>
                 <span class="tooltip">Download</span>
             </li>
         </ul>
-        <div class="theme-toggle" (click)="toggleDarkMode()">
-            <fa-icon class="link-icon" size="2x" style="color: #fff;" [icon]="iconMode"></fa-icon>
-        </div>
-        <label for="checkbox" class="toggler">
-            <input type="checkbox" id="checkbox" (click)="toggleDarkMode()">
-            <span class="ball"></span>
-            <fa-icon class="sun" [icon]="iconSun" size="1x" style="color: orange;"></fa-icon>
-            <fa-icon class="moon" [icon]="iconMoon" size="1x" style="color: rgb(255, 255, 255);"></fa-icon>
-        </label>
-    </nav>
-    <div class="profile_content">
-
     </div>
 </div>

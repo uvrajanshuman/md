@@ -24,8 +24,6 @@ export class NavbarComponent implements OnInit {
     console.log("nav: "+this.darkMode)
   }
 
- 
-
   toggleDarkMode(){
     this.darkModeService.switchTheme();
     this.darkMode = this.darkModeService.darkModeActive;

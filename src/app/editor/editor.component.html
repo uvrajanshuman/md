@@ -1,10 +1,30 @@
-<div class="container">
-    <div class="editor-previewer">
-        <div class="md-editor">
-            <app-code-editor [(code)]="currentMarkup"></app-code-editor>
+<app-sidebar (onToggleSideNav)="onToggleSideNav($event)"
+[editorActive]="editorActive"
+[previewerActive]="previewerActive"
+[sectionAvailable]="sectionAvailable"
+[downloadActive]="downloadActive"></app-sidebar>
+<div class="body-container">
+        <div class="editor-previewer downloadActive">
+            <div class="md-editor" *ngIf="editorActive">
+                <app-tab-header 
+                (closeTab)="closeEditor($event)"
+                [icon]="iconEditor"
+                [tabLabel]="'Editor'"
+                [tabActive]="true"></app-tab-header>
+                <app-code-editor class="content" [(code)]="currentMarkup"></app-code-editor>
+            </div>
+            <div class="md-parser" *ngIf="previewerActive">
+                <app-tab-header 
+                (closeTab)="closePreview($event)"
+                [icon]="iconPreview"
+                [tabLabel]="'Preview'"
+                [tabActive]="true"></app-tab-header>
+                <app-markdown-parser class="content" [code]="currentMarkup"></app-markdown-parser>
+            </div>
         </div>
-        <div class="md-parser">
-            <app-markdown-parser [code]="currentMarkup"></app-markdown-parser>
-        </div>
-    </div>
+      <div class="overlay" *ngIf="downloadActive">
+        <app-download
+        (closeDownloadTab)="closeDownload($event)"
+        [markdownString]="currentMarkup"></app-download>
+      </div>  
 </div>

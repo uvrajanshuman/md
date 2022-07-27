@@ -26,6 +26,9 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
 import { EditorComponent } from './editor/editor.component';
 import { FooterComponent } from './footer/footer.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { BodyComponent } from './body/body.component';
+import { TabHeaderComponent } from './tab-header/tab-header.component';
+import { DownloadComponent } from './download/download.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +43,10 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     EditorComponent,
     FooterComponent,
     SidenavComponent,
-    SidebarComponent
+    SidebarComponent,
+    BodyComponent,
+    TabHeaderComponent,
+    DownloadComponent
     ],
   imports: [
     BrowserModule,

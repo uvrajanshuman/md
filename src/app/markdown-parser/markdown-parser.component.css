@@ -2,11 +2,13 @@
   width: 100%;
   height: 100%;
   overflow: auto;
-  overflow-wrap:break-word;
+  /* overflow-wrap:break-word; */
   padding: 10px 20px;
-  border-radius: 5px;
-  border: 1px solid black;
+  /* border-radius: 5px; */
+  /* border: 1px solid black; */
+  background-color: #15181E;
 }
+
 
 /* .mparser{
   width: 100%;

@@ -1,44 +1,19 @@
-<div class="sidebar-container">
-    <div class="logo_content">
-        <div class="logo">
-            <!-- TOADD: icon -->
-            <img src="../assets/images/logo3.png" alt="">
-            <div class="logo_name">MarkDown Generator</div>
-        </div>
-        <!-- TOADD: switch btn -->
-        <!-- <fa-icon (click)="sidebarCollapse()" [icon]="iconBars" id="btn"></fa-icon>di -->
+<div class="sidenav" [ngClass]="sidebarCollapsed?'sidenav-collapsed':''">
+    <div class="logo-container">
+        <button class="logo" (click)="toggleCollapse()">A</button>
+        <div class="logo-text" *ngIf="sidebarCollapsed">Angular</div>
+        <button class="btn-close" *ngIf="sidebarCollapsed" (click)="closeSidenav()">
+            <i class="fal fa-times close-icon"></i>
+        </button>
     </div>
-    <ul class="nav_list">
-        <li>
-            <a href="">
-                <!-- TO ADD: icon -->
-                <span class="links_name">Dashboard</span>
+    <ul class="sidenav-nav">
+        <li class="sidenav-nav-item" *ngFor="let data of navData">
+            <a [routerLink]="[data.routelink]" class="sidenav-nav-link"
+            routerLinkActive="active"
+            >
+                <i class="sidenav-link-icon" [class]="data.icon"></i>
+                <span class="sidenav-link-text" *ngIf="sidebarCollapsed">{{data.label}}</span>
             </a>
-            <span class="tooltip">Dashboard</span>
-        </li>
-        <li>
-            <a href="">
-                <!-- TO ADD: icon -->
-                <span class="links_name">Dashboard</span>
-            </a>
-            <span class="tooltip">Dashboard</span>
-        </li>
-        <li>
-            <a href="">
-                <!-- TO ADD: icon -->
-                <span class="links_name">Dashboard</span>
-            </a>
-            <span class="tooltip">Dashboard</span>
-        </li>
-        <li>
-            <a href="">
-                <!-- TO ADD: icon -->
-                <span class="links_name">Dashboard</span>
-            </a>
-            <span class="tooltip">Dashboard</span>
         </li>
     </ul>
-    <div class="profile_content">
-        <!-- other icons -->
-    </div>
 </div>

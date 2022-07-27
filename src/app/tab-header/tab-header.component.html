@@ -1,0 +1,12 @@
+<div class="tab-header" [class.active]="tabActive">
+    <div class="tab-icon">
+        <fa-icon class="icon" [icon]="icon"></fa-icon>
+    </div>
+    <div class="tab-label">
+        {{tabLabel}}
+    </div>
+    <div class="tab-close" (click)="tabToggle()">
+        <fa-icon class="icon" [icon]="iconCancel"></fa-icon>
+    </div>
+</div>
+

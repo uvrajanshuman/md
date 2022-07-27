@@ -25,7 +25,7 @@ export class CodeEditorComponent implements OnInit {
     theme: 'vs-dark', language: 'markdown', 
     automaticLayout: true, scrollBeyondLastLine: false, wordWrap: 'on', minimap: {
       enabled: false
-    }, lineNumbers: 'off'
+    }, lineNumbers: 'on'
   };
   @Input('code')
   code!: string;

@@ -1,0 +1,136 @@
+.popup-form{
+width: 400px;
+margin: auto
+}
+
+.form-control{
+    margin: 30px 0;
+}
+
+.popup-form .form-control {
+    margin: 30px 0;
+  }
+  
+  .popup-form input[type='text'] {
+    border: 0;
+    border-bottom: 1px solid #b4becb;
+    width: 100%;
+    padding: 3px;
+    font-size: 16px;
+    background-color: transparent;
+    color: #333;
+  }
+  
+  .popup-form input:focus {
+    outline: none;
+  }
+
+  .card {
+    background-color: #fff;
+    color: #333;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    margin: 10px;
+  }
+
+
+  .flex{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .flex-col{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #fileName{
+    width: 70%;
+  }
+
+.form-header{
+    width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    text-align: center;
+    justify-content: space-between;
+}
+
+.form-header .title{
+    font-size: 20px;
+    padding: 10px 0;
+    margin-left: 5px;
+}
+
+.form-header .close-icon{
+  font-size: 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.form-header .close-icon:hover {
+  font-size: 12px;
+}
+
+.error-text{
+    font-size: small;
+    color: red;
+    width: 70%;
+    align-self: flex-start;
+}
+
+/* .btn{
+    display: inline-block;
+  padding: 10px 30px;
+  cursor: pointer;
+  background: rgba(0, 0, 0);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+} */
+
+.btn {
+    display: flex;
+    height: 50px;
+    padding: 0;
+    background: #009578;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    overflow: hidden;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    /* transition: all .5s ease-in-out; */
+  }
+  
+  .btn:hover {
+    background: #008168;
+  }
+  
+  .btn:active {
+    background: #006e58;
+  }
+  
+  .btn-text,
+  .btn-icon {
+    display: inline-flex;
+    align-items: center;
+    padding: 0 24px;
+    color: #fff;
+    height: 100%;
+  }
+  
+  .btn-icon {
+    font-size: 24px;
+    background: rgba(0, 0, 0, 0.08);
+  }
+  
+  .btn-disabled{
+    background: gray;
+    pointer-events: none;
+  }

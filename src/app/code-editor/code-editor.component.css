@@ -51,7 +51,7 @@ li{
   width: 100%;
   height: 100%;
   overflow: hidden;
-  border-radius: 5px;
+  /* border-radius: 5px; */
 }
 
 .parser{
@@ -101,6 +101,7 @@ li{
   justify-content: stretch;
   align-items: center;
   background-color: black;
+  background-color: #15181E;;
   color: rgb(148 163 184/1);
   margin: 0;
   padding: 10px;

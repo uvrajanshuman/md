@@ -5,10 +5,24 @@
   (codeChange)="updateCode($event)"
 ></app-code-editor> -->
 <!-- <app-markdown-parser [code]="'# Abcd'"></app-markdown-parser> -->
-
+<!-- <div class="body-container">
+  <div class="sidebar">
     <app-sidebar></app-sidebar>
+  </div>
 
-  <router-outlet ></router-outlet>
+  <div class="home-container">
+  <app-body></app-body>
+</div> -->
 
   <!-- <app-footer></app-footer> -->
   <!-- <textarea class="variable-textarea" [(ngModel)]="markdown"></textarea> -->
+
+<!-- </div> -->
+<!-- <app-sidebar (onToggleSideNav)="onToggleSideNav($event)"></app-sidebar> -->
+<!-- <app-sidebar (onToggleSideNav)="onToggleSideNav($event)"></app-sidebar> -->
+<!-- <app-body
+  [collapsed]="isSideNavCollapsed"
+  ></app-body> -->
+  
+<app-navbar></app-navbar>
+<router-outlet></router-outlet>

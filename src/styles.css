@@ -7,6 +7,7 @@
 @import 'styles/themes.css';
 @import 'styles/markdown.css';
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
 
 
 
@@ -23,68 +24,33 @@ body {
   background-color: var(--background-color);
   color: var(--text-color);
   font-family: 'Rubik', sans-serif;
+  position: relative;
+  min-width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
 
-h1 a {
+/* h1 a {
   text-decoration: none;
 }
 
 h1 a:hover {
   opacity: 0.87;
   text-decoration: underline;
-}
-
-
-body{
-  position: relative;
-  min-width: 100vw;
-  height: 100%;
-  overflow: hidden;
-  /* display: flex; */
-}
-
-.sidebar-container{
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 70px;
-  background: #11101d;
-  padding: 6px 14px;
-  transition: all 0.5s ease;
-}
-
-.sidebar-container.active{
-  width: 240px;
-}
-
-/* .sidebar.active .logo_content .logo{
-  opacity: 1;
-  pointer-events: all;
-}
-
-.sidebar.active #btn{
-  left: 90%;
-}
-
-.sidebar.active ul li .tooltip{
-  display: block;
-}
-
-.sidebar.active .links_name{
-  opacity: 0;
-  pointer-events: all;
-  color: red;
 } */
 
-.sidebar-container.active ~ .container{
-  width: calc(100%-240px);
-  left: 240px;
+.body-container{
+  width: calc(100vw - 60px);
+  height: calc(100vh - 60px);
+  z-index: 0;
+  position: relative;
+  top: 60px;
+  left: 60px;
+  transition: all .5s ease;
+  background-color: #f4f7fa;
+  background-color: hsl(220 10% 20%);
+  /* padding: 3rem; */
+  /* padding: 20px; */
+  /* padding: 10px; */
 }
-.container{
-  position: absolute;
-  height: 100%;
-  width: calc(100%-78px);
-  left: 78px;
-  transition: all 0.5s ease;
-}
+

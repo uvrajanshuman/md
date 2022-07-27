@@ -1,4 +1,4 @@
-.body-container{
+/* .body-container{
     position: relative;
     min-width: 100vw;
     height: 100%;
@@ -20,7 +20,7 @@
 
 .sidebar.active{
     width: 240px;
-}
+} */
 
 /* .sidebar.active .logo_content .logo{
     opacity: 1;
@@ -41,14 +41,14 @@
     color: red;
 } */
 
-.sidebar.active ~ .container{
-    width: calc(100%-240px);
+/* .sidebar.active ~ .home-container{
+    width: calc(100vw-240px);
     left: 240px;
 }
-.container{
+.home-container{
     position: absolute;
     height: 100%;
-    width: calc(100%-78px);
+    width: calc(100vw-78px);
     left: 78px;
     transition: all 0.5s ease;
-}
+} */

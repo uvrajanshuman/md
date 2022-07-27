@@ -6,6 +6,9 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 
 import {faGripLinesVertical, faGripVertical,faLayerGroup, faRotate, faUpDownLeftRight} from '@fortawesome/free-solid-svg-icons'
 
+import {faHashtag,faEye} from '@fortawesome/free-solid-svg-icons';
+import { SideNavtoggle } from '../sidebar/sidebar.component';
+
 @Component({
   selector: 'app-github-readme',
   templateUrl: './github-readme.component.html',
@@ -19,9 +22,46 @@ export class GithubReadmeComponent implements OnInit {
    iconReset = faRotate;
    iconMove = faUpDownLeftRight;
 
+
+  iconEditor = faHashtag;
+  iconPreview = faEye;
+
+  currentMarkup: string = '';
+  isSideNavCollapsed = true;
+  editorActive = true;
+  previewerActive = true;
+  downloadActive = false;
+  sectionActive = true;
+
+  sectionAvailable = true;
+
   constructor(private markdownService:SectionMarkdownService) {}
 
   ngOnInit(): void {}
+
+  onToggleSideNav(data: SideNavtoggle){
+    this.isSideNavCollapsed = data.collapsed;
+    this.editorActive = data.editorActive;
+    this.previewerActive = data.previewerActive;
+    this.downloadActive = data.downloadActive;
+  }
+  
+  closeEditor(data:boolean){
+    this.editorActive = !data;
+  }
+
+  closePreview(data:boolean){
+    this.previewerActive = !data;
+  }
+
+  closeDownload(data:boolean){
+    this.downloadActive = !data;
+  }
+
+  closeSection(data:boolean){
+    this.sectionActive = !data;
+  }
+
 
   allSections : SectionTemplate[] = [...sectionTemplates];
   selectedSections : SectionTemplate[] = [];

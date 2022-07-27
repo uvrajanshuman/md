@@ -1,0 +1,14 @@
+.body-container{
+    width: calc(100vw - 60px);
+    height: calc(100vh - 50px);
+    z-index: 0;
+    position: relative;
+    top: 50px;
+    /* left: 60px; */
+    transition: all .5s ease;
+    background-color: #f4f7fa;
+    background-color: var(--background-color);
+    /* padding: 3rem; */
+    /* padding: 20px; */
+    /* padding: 1px; */
+}

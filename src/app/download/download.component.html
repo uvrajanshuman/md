@@ -1,0 +1,35 @@
+<div class="popup-form">
+    <div class="card">
+        <div class="form-header flex">
+            <span class="title">Download File</span>
+            <span class="close-icon" (click)="close()">
+                <fa-icon [icon]="iconClose"></fa-icon>
+            </span>
+        </div>
+        <form class="flex-col">
+            <div class="form-control flex-col">
+                <div class="flex">
+                    <input ngModel type="text" name="name" id="fileName" [(ngModel)]="fileTitle" required
+                        #fileName="ngModel">
+                    <i>.md</i>
+                </div>
+                <div class="flex" *ngIf="fileName.touched && !fileName.valid">
+                    <span *ngIf="fileName.errors?.['required']" class="error-text">File name can't be empty</span>
+                </div>
+
+            </div>
+            <div class="btn-control">
+                <button class="btn" 
+                type="submit" 
+                (click)="downloadFile()"
+                [class.btn-disabled]="!fileName.valid"
+                [disabled]="!fileName.valid">
+                    <span class="btn-text">Download</span>
+                    <span class="btn-icon">
+                        <fa-icon [icon]="iconDownload"></fa-icon>
+                    </span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

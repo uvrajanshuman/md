@@ -1,116 +1,111 @@
-.sidebar-container .logo_content .logo{
-    color: #fff;
+.sidenav {
+    background: #263238;
+    transition: all .5s ease;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    width: 5rem;
+    /* width: 16.5625rem; */
+    height: 100vh;
+    box-shadow: 0.063 rem 0 1.25rem 0 #8690a3;
+}
+
+.sidenav .logo-container {
     display: flex;
-    height: 50px;
-    width: 100%;
     align-items: center;
-    opacity: 0;
-    pointer-events: none;
-    transition: all 0.5s ease;
-}
-
-.logo_content .logo i{
-    font-size: 28px;
-    margin-right: 5px;
-}
-
-.logo_content .logo .logo_name{
-    font-size: 20px;
-    font-weight: 400;
-}
-
-/* #1d1b31; */
-
-.sidebar-container #btn{
-    color: #fff;
-    position: absolute;
-    left: 90%;
-    top: 6px;
-    font-size: 20px;
-    height: 50px;
-    width: 50px;
-    text-align: center;
-    line-height: 50px;
-    transform: translateX(-50%);
-}
-
-.sidebar-container ul{
-    margin-top: 20px;
-}
-
-.sidebar-container ul li{
-    position: relative;
-    height: 50px;
+    padding: 0.938rem 0;
     width: 100%;
-    margin: 0 5px;
+}
+
+.sidenav .logo-container .logo {
+    background: #fff;
+    text-align: center;
+    width: 3rem;
+    min-width: 3rem;
+    border-radius: 0.313rem;
+    padding: 0.313rem;
+    font-size: 24px;
+    font-weight: 900;
+    cursor: pointer;
+    border: none;
+}
+
+.sidenav .logo-container .logo-text {
+    margin-left: 1.5rem;
+    font-size: 24px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.sidenav .logo-container .btn-close {
+    margin-left: auto;
+    cursor: pointer;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background-color: transparent;
+    border: none;
+}
+
+.fa-times {
+    color: #fff;
+    font-size: 24px;
+}
+
+.sidenav-collapsed {
+    width: 16.5625rem;
+}
+
+.sidenav-nav {
     list-style: none;
-    line-height: 50px;
-    border-radius: 12px;
+    padding: 0.938rem;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: calc(100%-3.65rem);
+    cursor: pointer;
 }
 
-.sidebar-container ul li .tooltip{
-    position: absolute;
-    left: 122px;
-    top: 50%;
-    transform: translate(-50%,-50%);
-    border-radius: 6px;
-    height: 35px;
-    width: 122px;
-    background: #fff;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-    line-height: 35px;
-    text-align: center;
-    transition: 0s;
-    opacity: 0;
-    pointer-events: none;
-    display: none;
+.sidenav-nav .sidenav-nav-item{
+    width: 100%;
+    margin-bottom: 0.625rem;
 }
 
-.sidebar-container ul li:hover .tooltip{
-    transition: all 0.5s ease;
-    opacity: 1;
-    top: 50%;
-}
-
-.sidebar-container ul li a{
-    color: #fff;
+.sidenav-nav .sidenav-nav-item .sidenav-nav-link{
     display: flex;
     align-items: center;
+    height: 3rem;
+    color: #f3f3f3;
     text-decoration: none;
-    transition: all 0.4s ease;
-    border-radius: 12px;
-    white-space: nowrap;
+    border-radius: 00.625rem;
+    transition: all .3s ease;
 }
 
-.sidebar-container ul li a:hover{
-    color: #11101d;
-    background: #fff;
-}
-
-/* for image */
-.sidebar-container ul li a i{
-    height: 50px;
-    min-width: 50px;
-    border-radius: 12px;
-    line-height: 50px;
+.sidenav-nav .sidenav-nav-item .sidenav-link-icon{
+    font-size: 22px;
+    width: 2rem;
+    min-width: 2rem;
+    margin: 0 0.5rem;
     text-align: center;
 }
 
 
-.sidebar-container .profile_content{
-    position: absolute;
-    color: #fff;
-    bottom: 0;
-    left: 0;
-    width: 100%;
+.sidenav-nav .sidenav-nav-item .sidenav-link-text{
+    margin-left: 1.5rem;
+}
+
+.sidenav-nav .sidenav-nav-item:hover .sidenav-nav-link{
+    background-color: #fff;
+    color: #000;
 }
 
 
+.active{
+    background: #fff;
+}
 
-
-
-.sidebar-container .links_name{
-    opacity: 0;
-    pointer-events: none;
-    transition: all 0.5s ease;
+.active .sidenav-link-icon,
+.active .sidenav-link-text{
+    color: #000;
 }
